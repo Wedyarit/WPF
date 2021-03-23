@@ -1,0 +1,28 @@
+﻿<Window x:Class="_23._03._2021.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_23._03._2021"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="Цвет" x:Name="mMain">
+                <MenuItem x:Name="miBlack" Header="Черный" Click="miClickBlack"></MenuItem>
+                <MenuItem x:Name="miRed" Header="Красный" Click="miClickRed"></MenuItem>
+                <MenuItem x:Name="miBlue" Header="Синий" Click="miClickBlue"></MenuItem>
+                <MenuItem x:Name="miGreen" Header="Зеленый" Click="miClickGreen"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Выход" Click="miClickExit"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <Grid x:Name="gRoot" Margin="10" Grid.Row="1">
+            <TextBox x:Name="tbName" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="400" Margin="50,0,50,0" FontSize="24" IsReadOnly="True"/>
+        </Grid>
+    </Grid>
+</Window>
