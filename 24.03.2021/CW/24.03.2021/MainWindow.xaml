@@ -1,0 +1,34 @@
+﻿<Window x:Class="_24._03._2021.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_24._03._2021"
+        mc:Ignorable="d"
+        Closing="OnClosing"
+        Title="Untitled - Notepad" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="File">
+                <MenuItem Header="New" Click="miClickNew"></MenuItem>
+                <MenuItem Header="Open" Click="miClickOpen"></MenuItem>
+                <MenuItem Header="Save" Click="miClickSave"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Exit" Click="miClickExit"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Undo" Command="ApplicationCommands.Undo"></MenuItem>
+                <MenuItem Header="Redo" Command="ApplicationCommands.Redo"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Cut" Command="ApplicationCommands.Cut"></MenuItem>
+                <MenuItem Header="Copy" Command="ApplicationCommands.Copy"></MenuItem>
+                <MenuItem Header="Paste" Command="ApplicationCommands.Paste"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <TextBox x:Name="tbContent" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="20" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"/>
+    </Grid>
+</Window>
