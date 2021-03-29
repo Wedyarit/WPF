@@ -46,11 +46,11 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <TextBlock Text="0 + 4 + 5 + 85 + 14" FontSize="32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5,5,5,5" Foreground="#FF5B5B5B"/>
+            <TextBlock Text="{Binding Path=History}" FontSize="32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5,5,5,5" Foreground="#FF5B5B5B"/>
         </Grid>
         
         <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <TextBlock Text="0" FontSize="64" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,5,5,5"/>
+            <TextBlock Text="{Binding Path=CurrentNumber}"  FontSize="64" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,5,5,5"/>
         </Grid>
 
         <Button Grid.Column="0" Grid.Row="2" Content="%" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="1,1,1,1" FontSize="32"/>
@@ -80,7 +80,7 @@
 
         <Button Grid.Column="0" Grid.Row="7" Content="±" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="1,1,1,1" FontSize="32"/>
         <Button Grid.Column="1" Grid.Row="7" Content="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="1,1,1,1" FontSize="32" FontWeight="Bold"/>
-        <Button Grid.Column="2" Grid.Row="7" Content="," HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="1,1,1,1" FontSize="32"/>
+        <Button Grid.Column="2" Grid.Row="7" Content="." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="1,1,1,1" FontSize="32"/>
         <Button Grid.Column="3" Grid.Row="7" Content="=" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="1,1,1,1" FontSize="32"/>
 
     </Grid>

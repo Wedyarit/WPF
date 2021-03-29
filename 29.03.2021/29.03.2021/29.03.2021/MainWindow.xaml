@@ -1,0 +1,33 @@
+﻿<Window x:Class="_29._03._2021.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_29._03._2021"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Label Grid.Row="1" Margin="10" FontFamily="Consolas" FontSize="20">
+                <Label.Content>
+                    <Binding Path="CurrentPage"></Binding>
+                </Label.Content>
+            </Label>
+            <Button Content="Previous" Click="OnPreviousClicked" Margin="10" FontFamily="Consolas" FontSize="20" HorizontalAlignment="Center"/>
+            <Button Content="Next" Click="OnNextClicked" Margin="10" FontFamily="Consolas" FontSize="20" HorizontalAlignment="Center"/>
+        </StackPanel>
+        <DataGrid ItemsSource="{Binding}" Grid.Row="0" FontFamily="Consolas" FontSize="20">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="0.2*" Binding="{Binding ID}"/>
+                <DataGridTextColumn Header="First Name" Width="0.5*" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Last Name" Width="0.5*" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Email" Width="*" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="IP Address" Width="0.6*" Binding="{Binding IP}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
