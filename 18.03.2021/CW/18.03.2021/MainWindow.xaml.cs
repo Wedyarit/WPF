@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,7 +36,7 @@ namespace _18._03._2021
 
             switch (key)
             {
-                case Key.Enter: return '\n';
+                case Key.Enter: return '=';
                 case Key.D0: return (')');
                 case Key.D1: return ('1');
                 case Key.D2: return ('2');
@@ -70,28 +72,37 @@ namespace _18._03._2021
             }
         }
 
+        private void UpdateFields()
+        {
+            tbCurrentNumber.Text = _calculator.CurrentNumber;
+            tbHistory.Text = _calculator.History;
+        }
+
         public MainWindow()
         {
             InitializeComponent();
             _calculator = new Calculator();
-            this.DataContext = _calculator;
+            UpdateFields();
             EventManager.RegisterClassHandler(typeof(Button), Button.ClickEvent, new RoutedEventHandler(Calculate));
             this.KeyDown += new KeyEventHandler(KeyCalculate);
         }
 
         private void Calculate(object sender, RoutedEventArgs e) {
             _calculator.Calculate((sender as Button).Content as string);
+            UpdateFields();
         }
 
         private void KeyCalculate(object sender, KeyEventArgs e)
         {
             _calculator.Calculate(KeyToChar(e.Key).ToString());
+            UpdateFields();
         }
     }
 
     class Calculator
     {
-        public string CurrentNumber { get; set; }
+        private string _currentNumber;
+        public string CurrentNumber { get => _currentNumber; set { if (value == "") _currentNumber = "0"; else _currentNumber = value; } }
         public string History { get; set; }
 
         public Calculator()
@@ -108,6 +119,47 @@ namespace _18._03._2021
                     CurrentNumber = n.ToString();
                 else
                     CurrentNumber += content;
+            } else
+            {
+                switch(content)
+                {
+                    case "⌫":
+                        CurrentNumber = CurrentNumber.Remove(CurrentNumber.Length - 1);
+                        break;
+                    case "CE":
+                        CurrentNumber = "";
+                        break;
+                    case "C":
+                        CurrentNumber = "";
+                        History = "";
+                        break;
+                    case "/":
+                    case "÷":
+                        History += $"{CurrentNumber} / ";
+                        CurrentNumber = "";
+                        break;
+                    case "×":
+                    case "*":
+                        History += $"{CurrentNumber} * ";
+                        CurrentNumber = "";
+                        break;
+                    case "-":
+                        History += $"{CurrentNumber} - ";
+                        CurrentNumber = "";
+                        break;
+                    case "+":
+                        History += $"{CurrentNumber} + ";
+                        CurrentNumber = "";
+                        break;
+                    case "=":
+                        History += $"{CurrentNumber}";
+                        CurrentNumber = (new DataTable().Compute(History.Replace(",", "."), "").ToString());
+                        History = "";
+                        break;
+                    default:
+                        MessageBox.Show(content, content);
+                        break;
+                }
             }
         }
     }
