@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Messenger"
+        xmlns:control = "clr-namespace:Messenger"
         mc:Ignorable="d"
-        Title="Messenger" Height="450" Width="800">
+        Title="Messenger" Height="1080" Width="1920">
     <Window.Resources>
         <ResourceDictionary Source="Dictionary.xaml" />
     </Window.Resources>
@@ -30,15 +31,8 @@
             </StackPanel>
             <TextBox Grid.Row="1" Text="Custom status" Background="{StaticResource ColorSecondary}"/>
             <ListView Grid.Row="2" Background="Transparent" BorderThickness="0" Margin="0,10">
-                <ListViewItem>
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Ellipse Height="30" Width="30">
-                            <Ellipse.Fill>
-                                <ImageBrush ImageSource="Images/olive.jpg"/>
-                            </Ellipse.Fill>
-                        </Ellipse>
-                        <TextBlock Text=" Olive"></TextBlock>
-                    </StackPanel>
+                <ListViewItem HorizontalContentAlignment="Stretch">
+                    <control:UserPanel Username="Olive" Avatar="Images/olive.jpg" Message="You: Thanks a lot, Olive!" Time="9:30 PM"/>
                 </ListViewItem>
             </ListView>
             <Border BorderBrush="{StaticResource ColorFifth}" BorderThickness="0,0,0.5,0" Grid.RowSpan="3"/>
@@ -64,140 +58,23 @@
 
             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" BorderThickness="0">
                 <StackPanel Background="Transparent" Orientation="Vertical">
-                    <StackPanel Style="{StaticResource MessageAnother}">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <TextBlock Text="Olive" Style="{StaticResource MessageTooltipAuthor}"/>
-                            <TextBlock Text="8:45 PM" Style="{StaticResource MessageTooltipTime}" Margin="10,0" HorizontalAlignment="Right" />
-                        </StackPanel>
-                        <Border Margin="5" Padding="10" BorderThickness="1" BorderBrush="#FFEAE6E6" Background="#FFEAE6E6" CornerRadius="10">
-                            <TextBlock TextWrapping="Wrap" Text="Jack, look. This TV program is about your favourite topic." Style="{StaticResource MessageContentOther}"></TextBlock>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Style="{StaticResource MessageMe}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Jack" Style="{StaticResource MessageTooltipAuthor}" Margin="10,0"></TextBlock>
-                            <TextBlock Text="9:00 PM" Style="{StaticResource MessageTooltipTime}"></TextBlock>
-                        </StackPanel>
-                        <Border Margin="5" Padding="10" BorderThickness="1" BorderBrush="White" Background="White" CornerRadius="10">
-                            <TextBlock TextWrapping="Wrap" Text="You mean about space exploration?" Style="{StaticResource MessageContentMe}"/>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Style="{StaticResource MessageAnother}">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <TextBlock Text="Olive" Style="{StaticResource MessageTooltipAuthor}"/>
-                            <TextBlock Text="9:01 PM" Style="{StaticResource MessageTooltipTime}" Margin="10,0" HorizontalAlignment="Right" />
-                        </StackPanel>
-
-                        <Border Margin="5" Padding="10" BorderThickness="1" BorderBrush="#FFEAE6E6" Background="#FFEAE6E6" CornerRadius="10">
-                            <TextBlock TextWrapping="Wrap" Text="Exactly. They've just told that one orbiter has reached the Jupiter." Style="{StaticResource MessageContentOther}"></TextBlock>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Style="{StaticResource MessageMe}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Jack" Style="{StaticResource MessageTooltipAuthor}" Margin="10,0"></TextBlock>
-                            <TextBlock Text="9:05 PM" Style="{StaticResource MessageTooltipTime}"></TextBlock>
-                        </StackPanel>
-                        <Border Margin="5" Padding="10" BorderThickness="1" BorderBrush="White" Background="White" CornerRadius="10">
-                            <TextBlock TextWrapping="Wrap" Text="When did it happen?" Style="{StaticResource MessageContentMe}"/>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Style="{StaticResource MessageAnother}">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <TextBlock Text="Olive" Style="{StaticResource MessageTooltipAuthor}"/>
-                            <TextBlock Text="9:08 PM" Style="{StaticResource MessageTooltipTime}" Margin="10,0" HorizontalAlignment="Right" />
-                        </StackPanel>
-
-                        <Border Margin="5" Padding="10" BorderThickness="1" BorderBrush="#FFEAE6E6" Background="#FFEAE6E6" CornerRadius="10">
-                            <TextBlock TextWrapping="Wrap" Text="I don't know. They've reported that a special shuttle was launched several years ago with the orbiter on it. It was meant to be a five-year flight and it has reached the target now." Style="{StaticResource MessageContentOther}"></TextBlock>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Style="{StaticResource MessageMe}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Jack" Style="{StaticResource MessageTooltipAuthor}" Margin="10,0"></TextBlock>
-                            <TextBlock Text="9:12 PM" Style="{StaticResource MessageTooltipTime}"></TextBlock>
-                        </StackPanel>
-                        <Border Margin="5" Padding="10" BorderThickness="1" BorderBrush="White" Background="White" CornerRadius="10">
-                            <TextBlock TextWrapping="Wrap" Text="That's amazing! If things develop so quickly we'll soon be able to travel to other planets ourselves." Style="{StaticResource MessageContentMe}"/>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Style="{StaticResource MessageAnother}">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <TextBlock Text="Olive" Style="{StaticResource MessageTooltipAuthor}"/>
-                            <TextBlock Text="9:20 PM" Style="{StaticResource MessageTooltipTime}" Margin="10,0" HorizontalAlignment="Right" />
-                        </StackPanel>
-                        <Border Margin="5" Padding="10" BorderThickness="1" BorderBrush="#FFEAE6E6" Background="#FFEAE6E6" CornerRadius="10">
-                            <TextBlock TextWrapping="Wrap" Text="Is that your dream to fly in space shuttle?" Style="{StaticResource MessageContentOther}"></TextBlock>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Style="{StaticResource MessageMe}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Jack" Style="{StaticResource MessageTooltipAuthor}" Margin="10,0"></TextBlock>
-                            <TextBlock Text="9:25 PM" Style="{StaticResource MessageTooltipTime}"></TextBlock>
-                        </StackPanel>
-                        <Border Margin="5" Padding="10" BorderThickness="1" BorderBrush="White" Background="White" CornerRadius="10">
-                            <TextBlock TextWrapping="Wrap" Text="Well, I have two dreams. First of all I'd like to conduct space explorations when I graduate from school. There is a good university in the UK that offers space exploration program. That's where I'd like to study. Hopefully, I will pass the exams. My second dream is to participate in one of space flights." Style="{StaticResource MessageContentMe}"/>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Style="{StaticResource MessageAnother}">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <TextBlock Text="Olive" Style="{StaticResource MessageTooltipAuthor}"/>
-                            <TextBlock Text="9:28 PM" Style="{StaticResource MessageTooltipTime}" Margin="10,0" HorizontalAlignment="Right" />
-                        </StackPanel>
-                        <Border Margin="5" Padding="10" BorderThickness="1" BorderBrush="#FFEAE6E6" Background="#FFEAE6E6" CornerRadius="10">
-                            <TextBlock TextWrapping="Wrap" Text="Where do you want to fly?" Style="{StaticResource MessageContentOther}"></TextBlock>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Style="{StaticResource MessageMe}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Jack" Style="{StaticResource MessageTooltipAuthor}" Margin="10,0"></TextBlock>
-                            <TextBlock Text="9:30 PM" Style="{StaticResource MessageTooltipTime}"></TextBlock>
-                        </StackPanel>
-                        <Border Margin="5" Padding="10" BorderThickness="1" BorderBrush="White" Background="White" CornerRadius="10">
-                            <TextBlock TextWrapping="Wrap" Text="Perhaps, to the Moon. It's the only natural satellite of our planet. Another option is Mars. It's the nearest planet to explore. Many scientists are interested in studying its surface." Style="{StaticResource MessageContentMe}"/>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Style="{StaticResource MessageAnother}">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <TextBlock Text="Olive" Style="{StaticResource MessageTooltipAuthor}"/>
-                            <TextBlock Text="9:36 PM" Style="{StaticResource MessageTooltipTime}" Margin="10,0" HorizontalAlignment="Right" />
-                        </StackPanel>
-                        <Border Margin="5" Padding="10" BorderThickness="1" BorderBrush="#FFEAE6E6" Background="#FFEAE6E6" CornerRadius="10">
-                            <TextBlock TextWrapping="Wrap" Text="I see. I know that the Apollo 17 mission was set in 1972. It was the last time when people set foot on the Moon. After that only unmanned spacecrafts were sent there." Style="{StaticResource MessageContentOther}"></TextBlock>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Style="{StaticResource MessageMe}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Jack" Style="{StaticResource MessageTooltipAuthor}" Margin="10,0"></TextBlock>
-                            <TextBlock Text="9:40 PM" Style="{StaticResource MessageTooltipTime}"></TextBlock>
-                        </StackPanel>
-                        <Border Margin="5" Padding="10" BorderThickness="1" BorderBrush="White" Background="White" CornerRadius="10">
-                            <TextBlock TextWrapping="Wrap" Text="Well, you never know. Space engineering is now in full progress, so hopefully there will be other flights. " Style="{StaticResource MessageContentMe}"/>
-                        </Border>
-                        <Border Margin="5" Padding="10" BorderThickness="1" BorderBrush="White" Background="White" CornerRadius="10">
-                            <TextBlock TextWrapping="Wrap" Text="More than that, I've heard that by 2050 people will be able to purchase travel certificates to the Moon." Style="{StaticResource MessageContentMe}"/>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Style="{StaticResource MessageAnother}">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <TextBlock Text="Olive" Style="{StaticResource MessageTooltipAuthor}"/>
-                            <TextBlock Text="9:28 PM" Style="{StaticResource MessageTooltipTime}" Margin="10,0" HorizontalAlignment="Right" />
-                        </StackPanel>
-                        <Border Margin="5" Padding="10" BorderThickness="1" BorderBrush="#FFEAE6E6" Background="#FFEAE6E6" CornerRadius="10">
-                            <TextBlock TextWrapping="Wrap" Text="That's good to know. Well, I hope that you will also reach some heights in space exploration. And, I wish you good luck with that!" Style="{StaticResource MessageContentOther}"></TextBlock>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Style="{StaticResource MessageMe}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Jack" Style="{StaticResource MessageTooltipAuthor}" Margin="10,0"></TextBlock>
-                            <TextBlock Text="9:30 PM" Style="{StaticResource MessageTooltipTime}"></TextBlock>
-                        </StackPanel>
-                        <Border Margin="5" Padding="10" BorderThickness="1" BorderBrush="White" Background="White" CornerRadius="10">
-                            <TextBlock TextWrapping="Wrap" Text="Thanks a lot, Rachel! I will try to do my best." Style="{StaticResource MessageContentMe}"/>
-                        </Border>
-                    </StackPanel>
+                    <control:MessageBox Author="Olive" Content="Jack, look. This TV program is about your favourite topic." Time="8:45 PM" Mine="False"/>
+                    <control:MessageBox Author="Jack" Content="You mean about space exploration?" Time="9:00 PM" Mine="True"/>
+                    <control:MessageBox Author="Olive" Content="Exactly. They've just told that one orbiter has reached the Jupiter." Time="9:05 PM" Mine="False"/>
+                    <control:MessageBox Author="Jack" Content="When did it happen?" Time="9:01 PM" Mine="True"/>
+                    <control:MessageBox Author="Olive" Content="I don't know. They've reported that a special shuttle was launched several years ago with the orbiter on it. It was meant to be a five-year flight and it has reached the target now." Time="9:08 PM" Mine="False"/>
+                    <control:MessageBox Author="Jack" Content="That's amazing! If things develop so quickly we'll soon be able to travel to other planets ourselves." Time="9:12 PM" Mine="True"/>
+                    <control:MessageBox Author="Olive" Content="Is that your dream to fly in space shuttle?" Time="9:20 PM" Mine="False"/>
+                    <control:MessageBox Author="Jack" Content="Well, I have two dreams. First of all I'd like to conduct space explorations when I graduate from school. There is a good university in the UK that offers space exploration program. That's where I'd like to study. Hopefully, I will pass the exams. My second dream is to participate in one of space flights." Time="9:25 PM" Mine="True"/>
+                    <control:MessageBox Author="Olive" Content="Where do you want to fly?" Time="9:28 PM" Mine="False"/>
+                    <control:MessageBox Author="Jack" Content="Perhaps, to the Moon. It's the only natural satellite of our planet. Another option is Mars. It's the nearest planet to explore. Many scientists are interested in studying its surface." Time="9:30 PM" Mine="True"/>
+                    <control:MessageBox Author="Olive" Content="I see. I know that the Apollo 17 mission was set in 1972. It was the last time when people set foot on the Moon. After that only unmanned spacecrafts were sent there." Time="9:36 PM" Mine="False"/>
+                    <control:MessageBox Author="Jack" Content="More than that, I've heard that by 2050 people will be able to purchase travel certificates to the Moon." Time="9:40 PM" Mine="True"/>
+                    <control:MessageBox Author="Olive" Content="That's good to know. Well, I hope that you will also reach some heights in space exploration. And, I wish you good luck with that!" Time="9:41 PM" Mine="False"/>
+                    <control:MessageBox Author="Jack" Content="Thanks a lot, Olive! I will try to do my best." Time="9:42 PM" Mine="True"/>
                 </StackPanel>
             </ScrollViewer>
-
+            
             <Grid Grid.Row="2" VerticalAlignment="Center" Margin="10,0" Background="{StaticResource ColorFourfold}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width=".1*"/>
@@ -205,9 +82,10 @@
                     <ColumnDefinition Width=".1*"/>
                 </Grid.ColumnDefinitions>
                 <Image Grid.Column="0" Source="Images/pin.png" Width="20" Height="20"></Image>
-                <TextBox Grid.Column="1" Text=" Type Message" Background="Transparent"></TextBox>
+                <TextBox Grid.Column="1" Text=" Type Message" Background="Transparent" Foreground="{StaticResource ColorFifth}" FontStyle="Italic" Padding="5"></TextBox>
                 <Image Grid.Column="2" Source="Images/send.png" Width="20" Height="20"></Image>
             </Grid>
+            
         </Grid>
 
         <Grid Grid.Column="2" Background="#DCDCDC">
@@ -231,18 +109,66 @@
             <StackPanel Grid.Row="1" Orientation="Vertical" Width="Auto">
                 <TextBlock Text="Media, Links and Files" Background="Transparent" Margin="10" FontSize="15" FontWeight="Bold"></TextBlock>
                 <UniformGrid Columns="3">
-                    <Image Source="Images/image.jpg" Margin="1"/>
-                    <Image Source="Images/image.jpg" Margin="1"/>
-                    <Image Source="Images/image.jpg" Margin="1"/>
-                    <Image Source="Images/image.jpg" Margin="1"/>
-                    <Image Source="Images/image.jpg" Margin="1"/>
-                    <Image Source="Images/image.jpg" Margin="1"/>
-                    <Image Source="Images/image.jpg" Margin="1"/>
-                    <Image Source="Images/image.jpg" Margin="1"/>
-                    <Image Source="Images/image.jpg" Margin="1"/>
-                    <Image Source="Images/image.jpg" Margin="1"/>
-                    <Image Source="Images/image.jpg" Margin="1"/>
-                    <Image Source="Images/image.jpg" Margin="1"/>
+                    <Rectangle Width="150" Height="150" Margin="1">
+                        <Rectangle.Fill>
+                            <ImageBrush  ImageSource="Images/Gallery/Gallery1.jpg"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle Width="150" Height="150" Margin="1">
+                        <Rectangle.Fill>
+                            <ImageBrush  ImageSource="Images/Gallery/Gallery2.jpg"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle Width="150" Height="150" Margin="1">
+                        <Rectangle.Fill>
+                            <ImageBrush  ImageSource="Images/Gallery/Gallery3.jpg"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle Width="150" Height="150" Margin="1">
+                        <Rectangle.Fill>
+                            <ImageBrush  ImageSource="Images/Gallery/Gallery4.jpg"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle Width="150" Height="150" Margin="1">
+                        <Rectangle.Fill>
+                            <ImageBrush  ImageSource="Images/Gallery/Gallery5.jpg"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle Width="150" Height="150" Margin="1">
+                        <Rectangle.Fill>
+                            <ImageBrush  ImageSource="Images/Gallery/Gallery6.jpg"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle Width="150" Height="150" Margin="1">
+                        <Rectangle.Fill>
+                            <ImageBrush  ImageSource="Images/Gallery/Gallery7.jpg"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle Width="150" Height="150" Margin="1">
+                        <Rectangle.Fill>
+                            <ImageBrush  ImageSource="Images/Gallery/Gallery8.jpg"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle Width="150" Height="150" Margin="1">
+                        <Rectangle.Fill>
+                            <ImageBrush  ImageSource="Images/Gallery/Gallery9.jpg"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle Width="150" Height="150" Margin="1">
+                        <Rectangle.Fill>
+                            <ImageBrush  ImageSource="Images/Gallery/Gallery10.jpg"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle Width="150" Height="150" Margin="1">
+                        <Rectangle.Fill>
+                            <ImageBrush  ImageSource="Images/Gallery/Gallery11.jpg"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle Width="150" Height="150" Margin="1">
+                        <Rectangle.Fill>
+                            <ImageBrush  ImageSource="Images/Gallery/Gallery12.jpg"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
                 </UniformGrid>
                 <Border Padding="5" BorderThickness="1" BorderBrush="Red" Background="Transparent" CornerRadius="10" VerticalAlignment="Bottom" Margin="20">
                     <TextBlock Text="Delete Chat" FontSize="20" Foreground="Red" HorizontalAlignment="Center"></TextBlock>
