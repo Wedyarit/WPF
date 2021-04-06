@@ -42,7 +42,7 @@ namespace Messenger
             typeof(MessageBox), new UIPropertyMetadata("", new PropertyChangedCallback(ContentChanged)));
         private static void ContentChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs args)
         {
-            ((MessageBox)depObj).tbContent.Text = $" {args.NewValue.ToString()}";
+            ((MessageBox)depObj).tbContent.Text = args.NewValue.ToString();
         }
 
         public string Time
@@ -73,12 +73,6 @@ namespace Messenger
                 ((MessageBox)depObj).tbContent.Style = (Style)((MessageBox)depObj).FindResource("MessageContentMe");
                 ((MessageBox)depObj).spMain.Style = (Style)((MessageBox)depObj).FindResource("MessageMe");
                 ((MessageBox)depObj).bBorder.Style = (Style)((MessageBox)depObj).FindResource("MessageBorderMe");
-                ((MessageBox)depObj).spTooltip.HorizontalAlignment = HorizontalAlignment.Left;
-            } else
-            {
-                ((MessageBox)depObj).tbContent.Style = (Style)((MessageBox)depObj).FindResource("MessageContentAnother");
-                ((MessageBox)depObj).spMain.Style = (Style)((MessageBox)depObj).FindResource("MessageAnother");
-                ((MessageBox)depObj).bBorder.Style = (Style)((MessageBox)depObj).FindResource("MessageBorderAnother");
                 ((MessageBox)depObj).spTooltip.HorizontalAlignment = HorizontalAlignment.Right;
             }
         }

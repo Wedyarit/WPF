@@ -27,7 +27,7 @@ namespace _28._03._2021
             _blocks = new List<Block>();
             foreach (XElement xElement in _xDocument.Descendants())
             {
-                Trace.WriteLine(xElement.Name);
+                if (xElement.Name == "{http://www.gribuser.ru/xml/fictionbook/2.0}p")
                 _blocks.Add(new Paragraph(new Run(xElement.Value)));
             }
 

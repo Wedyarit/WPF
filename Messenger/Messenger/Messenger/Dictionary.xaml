@@ -6,17 +6,21 @@
     </Style>
     <Style TargetType="{x:Type TextBox}">
         <Setter Property="FontSize" Value="20"/>
+        <Setter Property="BorderThickness" Value="0"/>
     </Style>
     <Style x:Key="UserAvatarThumbnail" TargetType="Image">
         <Setter Property="Width" Value="30" />
         <Setter Property="Height" Value="30" />
     </Style>
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
 
-    <Brush x:Key="ColorMain">#eae2e0</Brush>
+    <Brush x:Key="ColorMain">#faf0e6</Brush>
     <Brush x:Key="ColorSecondary">#DCDCDC</Brush>
     <Brush x:Key="ColorTertiary">#968089</Brush>
     <Brush x:Key="ColorFourfold">White</Brush>
     <Brush x:Key="ColorFifth">#FF979797</Brush>
-    
+    <Brush x:Key="ColorSixth">Black</Brush>
 
 </ResourceDictionary>
