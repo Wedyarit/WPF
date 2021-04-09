@@ -5,19 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_06._04._2021"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" MinHeight="450" MinWidth="800">
     <Window.Resources>
-        <Image x:Key="PlaylistIcon" Source="Images/playlist.png"/>
-        <Image x:Key="PlayIcon" Source="Images/play.png"/>
-        <Image x:Key="PauseIcon" Source="Images/pause.png"/>
-        <Image x:Key="VolumeIcon" Source="Images/volume.png"/>
-        <Image x:Key="SkipIcon" Source="Images/skip.png"/>
-        <Image x:Key="BackIcon" Source="Images/back.png"/>
-        <Image x:Key="BlockIcon" Source="Images/block.png"/>
+        <Image x:Key="PlayIcon" Source="Images/Icons/play.png"/>
+        <Image x:Key="PauseIcon" Source="Images/Icons/pause.png"/>
+        <Image x:Key="VolumeIcon" Source="Images/Icons/volume.png"/>
+        <Image x:Key="SkipIcon" Source="Images/Icons/skip.png"/>
+        <Image x:Key="BackIcon" Source="Images/Icons/back.png"/>
+        <Image x:Key="ShuffleIcon" Source="Images/Icons/shuffle.png"/>
+        <Image x:Key="LoopIcon" Source="Images/Icons/loop.png"/>
         <Style TargetType="{x:Type ProgressBar}" x:Key="PStyle">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ProgressBar" >
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Orientation" Value="Vertical">
+                                <Setter Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                         <Grid Name="TemplateRoot" SnapsToDevicePixels="True">
                             <Rectangle RadiusX="2" RadiusY="2" Fill="Transparent" />
                             <Border CornerRadius="10" Margin="1,1,1,1">
@@ -33,19 +42,60 @@
                             <Rectangle Name="PART_Track" Margin="1,1,1,1" />
                             <Decorator Name="PART_Indicator" Margin="1,1,1,1" HorizontalAlignment="Left">
                                 <Grid Name="Foreground">
-                                    <Border BorderThickness="2" Background="LightPink" CornerRadius="10,0,0,10" BorderBrush="LightPink" Margin="1,1,1,1" Name="Indicator"/>
-                                    <Grid Name="Overlay">
-                                    </Grid>
+                                    <Border BorderThickness="2" Background="LightBlue" CornerRadius="10,0,0,10" BorderBrush="LightBlue" Margin="1,1,1,1" Name="Indicator"/>
+                                    <Grid Name="Overlay"></Grid>
                                 </Grid>
                             </Decorator>
                             <Border BorderThickness="1" CornerRadius="10" BorderBrush="Black" />
-                        </Grid> 
+                        </Grid>
                     </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type ProgressBar}" x:Key="PStyleVolume">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ProgressBar" >
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Orientation" Value="Vertical">
+                                <Setter Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                        <Grid Name="TemplateRoot" SnapsToDevicePixels="True">
+                            <Rectangle RadiusX="2" RadiusY="2" Fill="Transparent" />
+                            <Border CornerRadius="5" Margin="1,1,1,1">
+                                <Border.Background>
+                                    <SolidColorBrush Color="Transparent"/>
+                                </Border.Background>
+                            </Border>
+                            <Border BorderThickness="1" CornerRadius="5" BorderBrush="LightGray" Margin="1,1,1,1">
+                                <Border.Background>
+                                    <SolidColorBrush Color="#FFDADADA"/>
+                                </Border.Background>
+                            </Border>
+                            <Rectangle Name="PART_Track" Margin="1,1,1,1" />
+                            <Decorator Name="PART_Indicator" Margin="1,1,1,1" HorizontalAlignment="Left">
+                                <Grid Name="Foreground">
+                                    <Border BorderThickness="2" Background="LightBlue" CornerRadius="5,0,0,5" BorderBrush="LightBlue" Margin="1,1,1,1" Name="Indicator"/>
+                                    <Grid Name="Overlay"></Grid>
+                                </Grid>
+                            </Decorator>
+                            <Border BorderThickness="1" CornerRadius="5" BorderBrush="Black" />
+                        </Grid>
+                    </ControlTemplate>
+
                 </Setter.Value>
             </Setter>
         </Style>
         <Style TargetType="{x:Type Button}">
             <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
     </Window.Resources>
     <Grid>
@@ -64,23 +114,28 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width=".15*"/>
+                    <ColumnDefinition Width=".2*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="20">
                     <Rectangle Width="150" Height="150" VerticalAlignment="Top">
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="Images/album.jpg"/>
+                            <ImageBrush x:Name="ibAlbum"/>
                         </Rectangle.Fill>
                     </Rectangle>
                     <StackPanel Grid.Column="0" Orientation="Vertical" Margin="20,0">
-                        <TextBlock Text="Paradise" FontSize="20" />
-                        <TextBlock Text="Coldplay" FontSize="16"/>
-                        <TextBlock Text="Mylo Xyloto" FontSize="16"/>
+                        <TextBlock x:Name="tbName" FontSize="20" />
+                        <TextBlock x:Name="tbAuthor" FontSize="16"/>
+                        <TextBlock x:Name="tbalbum" FontSize="16"/>
+                        <MediaElement x:Name="mePlayer" MediaEnded="MediaEnd" LoadedBehavior="Manual"/>
                     </StackPanel>
                 </StackPanel>
-                <StackPanel Grid.Column="1" Orientation="Vertical">
-                    <Button Content="{StaticResource PlaylistIcon}" Width="32" Height="32" Margin="10" Background="Transparent"/>
-                    <Button Content="{StaticResource VolumeIcon}" Width="32" Height="32" Margin="10" Background="Transparent"/>
-                    <Button Content="{StaticResource BlockIcon}" Width="32" Height="32" Margin="10" Background="Transparent"/>
+
+                <ProgressBar x:Name="pbVolume" Visibility="Hidden" BorderThickness="0" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top" Minimum="0" Maximum="100" Height="15" Width="150" Margin="0,25" Style="{StaticResource PStyleVolume}"/>
+                <Slider x:Name="sVolume" Grid.Column="1" Orientation="Vertical" BorderThickness="0" Value="5" HorizontalAlignment="Center" ValueChanged="VolumeChanged" VerticalAlignment="Top" Height="150" Margin="0,25" Width="15" IsMoveToPointEnabled="True" Opacity="0"/>
+                <StackPanel Grid.Column="2" Orientation="Vertical">
+                    <ToggleButton x:Name="tbtnLoop" Content="{StaticResource LoopIcon}" Width="48" Height="48" Margin="10" Background="Transparent" BorderThickness="0"/>
+                    <Button Content="{StaticResource VolumeIcon}" Width="48" Height="48" Margin="10" Background="Transparent" Click="HideVolume"/>
+                    <Button Content="{StaticResource ShuffleIcon}" Width="48" Height="48" Margin="10" Background="Transparent" Click="ShufflePlaylist"/>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1" Margin="10,0" >
@@ -88,33 +143,34 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" VerticalAlignment="Bottom" Text="2:30/3:45" HorizontalAlignment="Right" FontSize="14" Margin="0,0,10,0"></TextBlock>
-                <ProgressBar Grid.Row="1" VerticalAlignment="Top" Minimum="0" Maximum="100" Value="60" Height="25" Style="{StaticResource PStyle}"/>
+                <TextBlock x:Name="tbStatus" Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Margin="0,0,10,0"></TextBlock>
+                <ProgressBar x:Name="pbStatus" Grid.Row="1" VerticalAlignment="Top" Minimum="0" Maximum="100" Height="25" Style="{StaticResource PStyle}"/>
+                <Slider x:Name="sStatus" Grid.Row="1" VerticalAlignment="Top" Opacity="0" BorderThickness="0" Height="25" ValueChanged="TimerChanged" IsMoveToPointEnabled="True"/>
             </Grid>
-            <StackPanel Grid.Row="2" Background="LightPink">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
-                    <Button Content="{StaticResource BackIcon}" Width="32" Height="32" Margin="20" Background="Transparent"/>
-                    <Button Content="{StaticResource PauseIcon}" Width="32" Height="32" Margin="20" Background="Transparent"/>
-                    <Button Content="{StaticResource SkipIcon}" Width="32" Height="32" Margin="20" Background="Transparent"/>
+            <Grid Grid.Row="2" Background="LightBlue">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="{StaticResource BackIcon}" Width="48" Height="48" Margin="20" Background="Transparent" Click="BackClick"/>
+                    <Button x:Name="btnPlay" Content="{StaticResource PlayIcon}" Width="48" Height="48" Margin="20" Background="Transparent" Click="PlayStopClickButton"/>
+                    <Button Content="{StaticResource SkipIcon}" Width="48" Height="48" Margin="20" Background="Transparent" Click="SkipClick"/>
                 </StackPanel>
-            </StackPanel>
+            </Grid>
         </Grid>
 
         <StackPanel Grid.Column="1" Orientation="Vertical" Background="Black">
-            <TextBlock Text="PlayList" FontSize="20" Background="LightPink" Padding="10"/>
-            <ListView Grid.Column="1" Background="Transparent" BorderThickness="0">
-                <ListViewItem Margin="0,5">
-                    <TextBlock Text="1. Paradise - Coldplay" FontSize="18" Foreground="LightGray"/>
-                </ListViewItem>
-                <ListViewItem Margin="0,5">
-                    <TextBlock Text="2. Paradise - Coldplay" FontSize="18" Foreground="LightGray"/>
-                </ListViewItem>
-                <ListViewItem Margin="0,5">
-                    <TextBlock Text="3. Paradise - Coldplay" FontSize="18" Foreground="LightGray"/>
-                </ListViewItem>
-                <ListViewItem Margin="0,5">
-                    <TextBlock Text="4. Paradise - Coldplay" FontSize="18" Foreground="LightGray"/>
-                </ListViewItem>
+            <TextBlock Text="PlayList" FontSize="20" Background="LightBlue" Padding="10"/>
+            <ListView x:Name="lvPlaylist" ItemsSource="{Binding Tracks}" Grid.Column="1" Background="Transparent" BorderThickness="0" SelectionChanged="SelectTrack">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock FontSize="18" Foreground="LightGray" Margin="0,5" Tag="{Binding Name}">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} - {1}">
+                                    <Binding Path="Name" />
+                                    <Binding Path="Author" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
     </Grid>

@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Track.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -95,15 +96,26 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\album.jpg" />
-    <Resource Include="Images\back.png" />
-    <Resource Include="Images\block.png" />
-    <Resource Include="Images\pause.png" />
-    <Resource Include="Images\play.png" />
-    <Resource Include="Images\playlist.png" />
-    <Resource Include="Images\skip.png" />
-    <Resource Include="Images\volume.png" />
-    <Content Include="Music\audio.mp3" />
+    <Resource Include="Images\Icons\loop.png" />
+    <Resource Include="Images\Icons\shuffle.png" />
+    <Content Include="Images\Music\AcousticBreeze.jpg" />
+    <Resource Include="Images\Music\CreativeMinds.jpg" />
+    <Resource Include="Images\Music\HappyRock.jpg" />
+    <Resource Include="Images\Music\Hey.jpg" />
+    <Resource Include="Images\Music\JazzyFrenchy.jpg" />
+    <Resource Include="Images\Music\LittleIdea.jpg" />
+    <Content Include="Music\AcousticBreeze.mp3" />
+    <Content Include="Music\CreativeMinds.mp3" />
+    <Content Include="Music\HappyRock.mp3" />
+    <Content Include="Music\Hey.mp3" />
+    <Content Include="Music\JazzyFrenchy.mp3" />
+    <Content Include="Music\LittleIdea.mp3" />
+    <Resource Include="Images\Icons\back.png" />
+    <Resource Include="Images\Icons\pause.png" />
+    <Resource Include="Images\Icons\play.png" />
+    <Resource Include="Images\Icons\skip.png" />
+    <Resource Include="Images\Icons\volume.png" />
+    <Resource Include="Data\Playlist.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
