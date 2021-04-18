@@ -1,7 +1,7 @@
-# File Explorer
-Create a form similar to the Windows File Explorer.
+# FB2 Reader
+Implement FB2 Reader.
 
-![](https://i.imgur.com/Yd19evM.jpg)
+![](https://i.imgur.com/c4tTSLQ.png)
 
 ## Contributing
 The work was done and prepared by [@Wedyarit (Vyacheslav)](https://github.com/Wedyarit).

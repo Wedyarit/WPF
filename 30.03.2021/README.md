@@ -1,7 +1,7 @@
-# File Explorer
-Create a form similar to the Windows File Explorer.
+# Questionnaire
+Implement Questionnaire.
 
-![](https://i.imgur.com/Yd19evM.jpg)
+![](https://i.imgur.com/KAQXn0O.png)
 
 ## Contributing
 The work was done and prepared by [@Wedyarit (Vyacheslav)](https://github.com/Wedyarit).
